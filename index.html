@@ -165,7 +165,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.45);padding:40px 0 48px;b
     <h1>I build landing pages that actually <em>land you clients</em></h1>
     <p class="hero-sub">Your page should be booking calls for you. I turn the visitors you already have into paying clients — one clear offer, one clear next step.</p>
     <div class="hero-ctas">
-      <a class="btn btn-solid" href="#" data-cta="call">Book a discovery call</a>
+      <a class="btn btn-solid" href="#" data-cta="form">Tell me about your project</a>
       <a class="btn btn-ghost" href="#how">See how it works</a>
     </div>
     <p class="microcopy">Fast, simple, no strings attached.</p>
@@ -199,7 +199,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.45);padding:40px 0 48px;b
       <p class="punch"><span class="hl">Just action.</span><br><span class="hl">No more wasted traffic.</span></p>
       <p>Your page becomes what it should have been all along: a tool that fills your calendar while you do the actual work.</p>
       <div style="margin-top:48px;">
-        <a class="btn btn-solid" href="#" data-cta="call">Book a discovery call</a>
+        <a class="btn btn-solid" href="#" data-cta="form">Tell me about your project</a>
         <p class="microcopy">Fast, simple, no strings attached.</p>
       </div>
     </div>
@@ -219,8 +219,8 @@ footer{background:var(--dark);color:rgba(255,255,255,0.45);padding:40px 0 48px;b
       <div class="step reveal" style="transition-delay:.2s;"><div class="step-num">03</div><h3>We launch &amp; refine.</h3><p>Your page goes live, I fine-tune it for 14 days, then it converts on autopilot.</p></div>
     </div>
     <div class="center reveal" style="margin-top:56px;">
-      <a class="btn btn-solid" href="#" data-cta="call">Book a discovery call</a>
-      <p class="microcopy">Or start with the <a href="#" data-cta="form" style="text-decoration:underline;">5-minute intake form</a>.</p>
+      <a class="btn btn-solid" href="#" data-cta="form">Tell me about your project</a>
+      <p class="microcopy">Takes about 2 minutes — no strings attached.</p>
     </div>
   </div>
 </section>
@@ -311,8 +311,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.45);padding:40px 0 48px;b
     <h2>Stop losing leads.<br><em>Start landing clients.</em></h2>
     <p>Let's figure out what's holding your page back — and what your business looks like when we fix it.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-      <a class="btn btn-invert" href="#" data-cta="call">Book a discovery call</a>
-      <a class="btn btn-ghost-invert" href="#" data-cta="form">Fill the intake form</a>
+      <a class="btn btn-invert" href="#" data-cta="form">Tell me about your project</a>
     </div>
     <p class="microcopy">Fast, simple, no strings attached.</p>
   </div>
@@ -330,15 +329,24 @@ footer{background:var(--dark);color:rgba(255,255,255,0.45);padding:40px 0 48px;b
   </div>
 </footer>
 
+<!-- Tally popup embed -->
+<script async src="https://tally.so/widgets/embed.js"></script>
 <script>
-/* Replace these two URLs once, and every CTA on the page updates. */
-const CTA_LINKS = {
-  call: "#",   /* e.g. https://cal.com/yourname/discovery or Calendly link */
-  form: "#"    /* e.g. your Tally intake form URL */
-};
-document.querySelectorAll("[data-cta]").forEach(a=>{
-  const url = CTA_LINKS[a.dataset.cta];
-  if(url && url !== "#") a.href = url;
+/* Every CTA opens the LANDvinia intake form as a modal popup. */
+function openIntakePopup(){
+  if(window.Tally && typeof Tally.openPopup === "function"){
+    Tally.openPopup("J9xldz", {
+      layout: "modal",
+      width: 640,
+      autoClose: 3000
+    });
+  } else {
+    /* Fallback if the embed script hasn't loaded yet */
+    window.open("https://tally.so/r/J9xldz", "_blank", "noopener");
+  }
+}
+document.querySelectorAll("[data-cta]").forEach(el=>{
+  el.addEventListener("click", e=>{ e.preventDefault(); openIntakePopup(); });
 });
 
 /* Scroll reveal */
