@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LANDvinia — Landing pages that actually land you clients</title>
+<meta name="description" content="I build landing pages and sales pages for individuals and startups selling a service. Pages with one job: turning your visitors into booked calls.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F0ED;
+  --bg-card:#E9E7E2;
+  --ink:#141414;
+  --ink-soft:#4A4A46;
+  --ink-faint:#8B8A85;
+  --dark:#101010;
+  --dark-soft:#1C1C1C;
+  --line:#D8D5CF;
+  --serif:"Instrument Serif",serif;
+  --sans:"Albert Sans",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;}
+em,.serif{font-family:var(--serif);font-style:italic;font-weight:400;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,56px);}
+
+/* ---------- header ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:26px clamp(20px,4vw,56px);mix-blend-mode:difference;color:#fff;}
+.logo{font-weight:500;font-size:1.15rem;letter-spacing:-0.01em;}
+.logo sup{font-size:0.55em;font-weight:400;}
+nav a{font-size:0.85rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;margin-left:28px;opacity:0.85;}
+nav a:hover{opacity:1;}
+@media(max-width:720px){nav a{margin-left:16px;font-size:0.75rem;}}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:400;font-size:0.95rem;padding:16px 32px;cursor:pointer;transition:all .25s ease;border:1px solid var(--ink);}
+.btn-solid{background:var(--ink);color:var(--bg);}
+.btn-solid:hover{background:transparent;color:var(--ink);}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink-faint);}
+.btn-ghost:hover{border-color:var(--ink);}
+.btn-invert{background:var(--bg);color:var(--ink);border-color:var(--bg);}
+.btn-invert:hover{background:transparent;color:var(--bg);}
+.btn-ghost-invert{background:transparent;color:var(--bg);border-color:rgba(255,255,255,0.4);}
+.btn-ghost-invert:hover{border-color:var(--bg);}
+.microcopy{font-size:0.82rem;color:var(--ink-faint);margin-top:14px;font-style:italic;font-weight:300;}
+
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:120px clamp(24px,5vw,72px) 80px;}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;font-size:0.85rem;color:var(--ink-soft);margin-bottom:28px;font-weight:400;}
+.hero-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:#2EA96B;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+h1{font-weight:500;font-size:clamp(2.6rem,5.2vw,4.6rem);line-height:1.04;letter-spacing:-0.025em;}
+h1 em{letter-spacing:0;}
+.hero-sub{font-size:clamp(1rem,1.3vw,1.2rem);color:var(--ink-soft);max-width:44ch;margin-top:28px;}
+.hero-ctas{display:flex;gap:12px;margin-top:40px;flex-wrap:wrap;}
+.hero-media{position:relative;overflow:hidden;background:var(--dark);}
+.hero-media video,.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.media-placeholder{position:absolute;inset:0;background:
+  radial-gradient(120% 90% at 80% 10%,#2A2A28 0%,transparent 60%),
+  radial-gradient(100% 100% at 15% 85%,#232320 0%,transparent 55%),
+  #101010;
+  animation:drift 14s ease-in-out infinite alternate;}
+@keyframes drift{from{transform:scale(1) translate(0,0);}to{transform:scale(1.12) translate(-2%,2%);}}
+.media-note{position:absolute;bottom:24px;left:24px;color:rgba(255,255,255,0.35);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;}
+  .hero-media{min-height:52vh;order:2;}
+  .hero-copy{padding-top:130px;}
+}
+
+/* ---------- marquee ---------- */
+.marquee{background:var(--dark);color:var(--bg);overflow:hidden;padding:18px 0;border-top:1px solid #000;}
+.marquee-track{display:flex;gap:64px;white-space:nowrap;animation:scroll 28s linear infinite;width:max-content;}
+.marquee span{font-size:0.9rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:400;opacity:0.75;}
+.marquee em{opacity:1;font-size:1rem;letter-spacing:0.02em;text-transform:none;}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ---------- sections ---------- */
+section{padding:clamp(90px,11vw,150px) 0;}
+.eyebrow{font-size:0.8rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;margin-bottom:22px;}
+h2{font-weight:500;font-size:clamp(2.1rem,4.2vw,3.6rem);line-height:1.08;letter-spacing:-0.02em;}
+.narrow{max-width:620px;margin:0 auto;}
+.narrow p{margin-bottom:1.4em;font-size:clamp(1.02rem,1.25vw,1.15rem);color:var(--ink-soft);}
+.narrow p strong{font-weight:500;color:var(--ink);}
+.punch{font-size:clamp(1.02rem,1.25vw,1.15rem);color:var(--ink);}
+.hl{background:#E3E0D8;padding:1px 6px;}
+.center{text-align:center;}
+
+/* ---------- process ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:64px;}
+.step{background:var(--bg-card);padding:44px 36px 48px;display:flex;flex-direction:column;min-height:380px;}
+.step-num{font-size:1.6rem;font-weight:500;}
+.step h3{font-weight:500;font-size:1.5rem;margin-top:auto;letter-spacing:-0.01em;}
+.step p{color:var(--ink-soft);margin-top:12px;font-size:0.98rem;}
+@media(max-width:820px){.steps{grid-template-columns:1fr;}.step{min-height:auto;gap:20px;}}
+
+/* ---------- split sections (about / testimonial) ---------- */
+.split{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,6vw,96px);align-items:center;}
+@media(max-width:900px){.split{grid-template-columns:1fr;}}
+.photo-frame{position:relative;aspect-ratio:4/5;background:#DDD9D2;overflow:hidden;}
+.photo-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+.photo-note{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--ink-faint);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;}
+.ethos-eyebrow{font-size:0.8rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;margin-bottom:20px;}
+.ethos h2{margin-bottom:32px;}
+.ethos p{color:var(--ink-soft);margin-bottom:1.3em;font-size:1.05rem;}
+
+/* ---------- testimonials ---------- */
+.testi{background:var(--bg);}
+.testi-head{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(3rem,8vw,7rem);line-height:1;letter-spacing:-0.02em;margin-bottom:64px;}
+blockquote{font-size:clamp(1.4rem,2.4vw,2.1rem);font-weight:400;line-height:1.35;letter-spacing:-0.01em;max-width:24ch;}
+.testi-attr{margin-top:28px;color:var(--ink-soft);font-size:1rem;}
+
+/* ---------- FAQ ---------- */
+.faq{background:var(--dark);color:var(--bg);}
+.faq h2{color:var(--bg);}
+.faq .eyebrow{color:rgba(255,255,255,0.4);}
+.faq-sub{color:rgba(255,255,255,0.55);margin-top:16px;font-size:1.05rem;}
+.faq-list{margin-top:64px;border-top:1px solid rgba(255,255,255,0.14);}
+details{border-bottom:1px solid rgba(255,255,255,0.14);}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:28px 4px;font-weight:400;font-size:clamp(1.05rem,1.5vw,1.3rem);transition:opacity .2s;}
+summary::-webkit-details-marker{display:none;}
+summary:hover{opacity:0.75;}
+summary .plus{font-size:1.4rem;font-weight:300;flex-shrink:0;transition:transform .3s ease;color:rgba(255,255,255,0.5);}
+details[open] .plus{transform:rotate(45deg);}
+.faq-a{padding:0 4px 32px;max-width:640px;color:rgba(255,255,255,0.65);font-size:1rem;}
+.faq-a p{margin-bottom:1em;}
+
+/* ---------- final CTA ---------- */
+.final{background:var(--dark);color:var(--bg);text-align:center;padding-top:clamp(110px,14vw,190px);padding-bottom:clamp(110px,14vw,190px);border-top:1px solid rgba(255,255,255,0.1);}
+.final h2{color:var(--bg);font-size:clamp(2.4rem,5.5vw,4.8rem);}
+.final p{color:rgba(255,255,255,0.6);margin:26px auto 44px;max-width:46ch;font-size:1.1rem;}
+.final .microcopy{color:rgba(255,255,255,0.4);}
+
+/* ---------- footer ---------- */
+footer{background:var(--dark);color:rgba(255,255,255,0.45);padding:40px 0 48px;border-top:1px solid rgba(255,255,255,0.1);font-size:0.85rem;}
+.foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.foot-row a{margin-right:22px;color:rgba(255,255,255,0.65);}
+.foot-row a:hover{color:#fff;}
+
+/* ---------- reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#top">LANDvinia<sup>®</sup></a>
+  <nav>
+    <a href="#how">How it works</a>
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" style="padding:0;">
+  <div class="hero-copy">
+    <div class="hero-eyebrow"><span class="dot"></span>Taking on new projects — limited spots</div>
+    <h1>I build landing pages that actually <em>land you clients</em></h1>
+    <p class="hero-sub">Your page should be booking calls for you. I turn the visitors you already have into paying clients — one clear offer, one clear next step.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-solid" href="#" data-cta="call">Book a discovery call</a>
+      <a class="btn btn-ghost" href="#how">See how it works</a>
+    </div>
+    <p class="microcopy">Fast, simple, no strings attached.</p>
+  </div>
+  <div class="hero-media">
+    <!-- TODO: replace the placeholder below with your looping video:
+         <video autoplay muted loop playsinline src="hero-loop.mp4"></video> -->
+    <div class="media-placeholder"></div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Landing pages</span><span><em>that convert</em></span><span>Sales pages</span><span><em>that sell</em></span><span>Strategy first</span><span><em>always</em></span><span>Landing pages</span><span><em>that convert</em></span><span>Sales pages</span><span><em>that sell</em></span><span>Strategy first</span><span><em>always</em></span>
+  </div>
+</div>
+
+<!-- ============ PROBLEM ============ -->
+<section id="problem">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <h2 style="margin-bottom:48px;">Your page should be selling <em>for you</em></h2>
+      <p><strong>Not just sitting there looking nice.</strong></p>
+      <p>Most websites are online business cards. Pretty, polite — and completely silent.</p>
+      <p>They tell people what you do. They don't give anyone a reason to act.</p>
+      <p class="punch">All aesthetics, no strategy.<br>All polish, no pipeline.</p>
+      <p>And that's not your fault.</p>
+      <p>Meanwhile, every post you write, every referral you get, every ad you pay for — it all sends people to a page that lets them slip away.</p>
+      <p><strong>I build pages with exactly one job:</strong> turning attention into booked calls. Your offer made crystal clear. No confusion, no second-guessing.</p>
+      <p class="punch"><span class="hl">Just action.</span><br><span class="hl">No more wasted traffic.</span></p>
+      <p>Your page becomes what it should have been all along: a tool that fills your calendar while you do the actual work.</p>
+      <div style="margin-top:48px;">
+        <a class="btn btn-solid" href="#" data-cta="call">Book a discovery call</a>
+        <p class="microcopy">Fast, simple, no strings attached.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section id="how" style="background:var(--bg);padding-top:0;">
+  <div class="wrap">
+    <div class="center reveal">
+      <h2>Your <em>landing page</em> in 2 weeks</h2>
+      <p style="color:var(--ink-soft);margin-top:18px;font-size:1.1rem;">You show up twice. I handle everything else.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">01</div><h3>We strategize.</h3><p>A deep intake on your offer, your ideal client, and every objection standing between them and "yes".</p></div>
+      <div class="step reveal" style="transition-delay:.1s;"><div class="step-num">02</div><h3>I build.</h3><p>Copy that sells, design that converts — in your voice, not a template's. You review and approve.</p></div>
+      <div class="step reveal" style="transition-delay:.2s;"><div class="step-num">03</div><h3>We launch &amp; refine.</h3><p>Your page goes live, I fine-tune it for 14 days, then it converts on autopilot.</p></div>
+    </div>
+    <div class="center reveal" style="margin-top:56px;">
+      <a class="btn btn-solid" href="#" data-cta="call">Book a discovery call</a>
+      <p class="microcopy">Or start with the <a href="#" data-cta="form" style="text-decoration:underline;">5-minute intake form</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<!-- NOTE: bracketed placeholders — swap in real client quotes as they land. Do not publish invented results. -->
+<section class="testi" style="padding-top:0;">
+  <div class="wrap">
+    <div class="testi-head reveal">Testimonials</div>
+    <div class="split">
+      <div class="reveal">
+        <blockquote>&ldquo;[Real client quote goes here — result, timeframe, and how it felt to work together.]&rdquo;</blockquote>
+        <p class="testi-attr">— [Client name, business]</p>
+      </div>
+      <div class="photo-frame reveal" style="aspect-ratio:3/4;max-width:420px;justify-self:end;">
+        <div class="photo-note">Client photo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT / ETHOS ============ -->
+<section id="about" style="background:var(--bg-card);">
+  <div class="wrap">
+    <div class="split">
+      <div class="photo-frame reveal">
+        <!-- swap to lavinia-subtle.jpg for the lighter grade -->
+        <img src="lavinia-moody.jpg" alt="Lavinia, founder of LANDvinia">
+      </div>
+      <div class="ethos reveal">
+        <div class="ethos-eyebrow">The LANDvinia ethos</div>
+        <h2><em>I build pages the way I'd want mine built</em> — strategy first, personally, with my name on it.</h2>
+        <p>I'm Lavinia. LANDvinia is a one-person studio, on purpose. When you work with me, there's no account manager, no junior designer, no template dressed up as strategy — just me, obsessing over whether your page will actually convert.</p>
+        <p>Every project starts with your reality: your offer, your clients' exact words, the objections they don't say out loud. Then I build a page around one decision — the one your visitor needs to make.</p>
+        <p>I take on a small number of projects at a time, and I'll be honest with you on the first call: if a landing page isn't your growth lever right now, I'll tell you — and tell you what is.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap" style="max-width:880px;">
+    <div class="reveal">
+      <h2>Your questions, <em>answered</em></h2>
+      <p class="faq-sub">What you're probably wondering right now.</p>
+    </div>
+    <div class="faq-list reveal">
+      <details>
+        <summary>How long does it actually take?<span class="plus">+</span></summary>
+        <div class="faq-a"><p>Two weeks from our strategy call to launch. Week one is strategy and copy, week two is design, your review, and go-live. After that I keep fine-tuning for 14 days while real visitors hit the page.</p></div>
+      </details>
+      <details>
+        <summary>How much of my time does this take?<span class="plus">+</span></summary>
+        <div class="faq-a"><p>About two hours total. One hour for the intake call where we map your offer and your ideal client. One hour for review and feedback across two revision rounds. I handle everything else — copy, design, setup, launch. No homework.</p></div>
+      </details>
+      <details>
+        <summary>I don't have copy, branding, or photos yet. Is that a problem?<span class="plus">+</span></summary>
+        <div class="faq-a"><p>No — most of my clients don't. The intake process is built to pull the raw material out of you: your story, your offer, the words your clients actually use. I write every line of copy from that. If you're missing visuals, we work with what you have or keep it clean and typographic — some of the best-converting pages have no photos at all.</p></div>
+      </details>
+      <details>
+        <summary>How is this different from hiring a web designer?<span class="plus">+</span></summary>
+        <div class="faq-a"><p>A web designer's job ends when the page looks good. Mine starts there. Designers optimize for their portfolio; I optimize for your calendar. Every section, headline, and button on your page exists to move a visitor one step closer to booking — and anything that doesn't gets cut.</p></div>
+      </details>
+      <details>
+        <summary>Couldn't I just build it myself on Squarespace or Framer?<span class="plus">+</span></summary>
+        <div class="faq-a"><p>You could — the tools are genuinely good now. But the platform was never the hard part. The hard part is knowing what to say, in what order, to a stranger who gives you eight seconds. That's strategy and copy, and it's where DIY pages quietly lose clients. You're not paying for software; you're paying to skip 60 hours of guessing.</p></div>
+      </details>
+      <details>
+        <summary>What platform do you build on — and do I own the page?<span class="plus">+</span></summary>
+        <div class="faq-a"><p>I build on modern platforms you can manage without code, and yes — you own everything. No retainers, no lock-in, no surprise fees. The only ongoing cost is standard hosting. If you want changes later, I'll show you how to make small ones yourself, and I'm here for the bigger ones.</p></div>
+      </details>
+      <details>
+        <summary>What happens after launch?<span class="plus">+</span></summary>
+        <div class="faq-a"><p>The page goes live, and for the next 14 days I watch how real visitors behave and fine-tune — headlines, order, calls to action. Then it runs on autopilot. Ongoing optimization is available if you want it later, but it's optional, never required.</p></div>
+      </details>
+      <details>
+        <summary>What does it cost?<span class="plus">+</span></summary>
+        <div class="faq-a"><p>It depends on scope, and I'd rather give you a real number than a vague range — that's what the discovery call is for. Here's the honest math to bring with you: if one page books you even a couple of extra clients in its first month, it has paid for itself. Everything after that is compounding.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <div class="wrap reveal">
+    <h2>Stop losing leads.<br><em>Start landing clients.</em></h2>
+    <p>Let's figure out what's holding your page back — and what your business looks like when we fix it.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a class="btn btn-invert" href="#" data-cta="call">Book a discovery call</a>
+      <a class="btn btn-ghost-invert" href="#" data-cta="form">Fill the intake form</a>
+    </div>
+    <p class="microcopy">Fast, simple, no strings attached.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <div>© 2026 LANDvinia. All rights reserved.</div>
+    <div>
+      <a href="#top">Home</a>
+      <a href="#how">How it works</a>
+      <a href="#about">About</a>
+      <a href="mailto:lavinia@dux-soup.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Replace these two URLs once, and every CTA on the page updates. */
+const CTA_LINKS = {
+  call: "#",   /* e.g. https://cal.com/yourname/discovery or Calendly link */
+  form: "#"    /* e.g. your Tally intake form URL */
+};
+document.querySelectorAll("[data-cta]").forEach(a=>{
+  const url = CTA_LINKS[a.dataset.cta];
+  if(url && url !== "#") a.href = url;
+});
+
+/* Scroll reveal */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
+},{threshold:0.15});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
